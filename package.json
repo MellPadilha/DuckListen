@@ -2,7 +2,7 @@
   "name": "ducklisten",
   "version": "0.0.1",
   "description": "Projeto da faculdade para desenvolvimento de um software",
-  "productName": "Duck App",
+  "productName": "DuckListen",
   "author": "Mell <mellpadilha11@gmail.com>",
   "private": true,
   "scripts": {
