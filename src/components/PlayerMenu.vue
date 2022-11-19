@@ -17,48 +17,14 @@
         </template>
       </q-input>
       <div class="absolute-right">
-        <q-btn-dropdown
+        <q-btn
           class="user-button"
           icon="fa-regular fa-user"
           rounded
           outline
-          label="Username"
           no-caps
-        >
-          <q-list>
-            <q-item clickable>
-              <q-item-section>
-                <q-item-label class="menuDropDown" on-click="publicarMusica()"
-                  >Publicar música</q-item-label
-                >
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable>
-              <q-item-section>
-                <q-item-label class="menuDropDown" on-click="publicarPodcast()">
-                  <q-side-link to="UploadPodcast"
-                    >Publicar podcast</q-side-link
-                  ></q-item-label
-                >
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable>
-              <q-item-section>
-                <q-item-label class="menuDropDown"
-                  >Ver análise de conteudo</q-item-label
-                >
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable>
-              <q-item-section>
-                <q-item-label class="menuDropDown">Deslogar</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-btn-dropdown>
+          :label="$t('default_user_name')"
+        />
       </div>
     </div>
   </q-card>
@@ -76,8 +42,6 @@ export default {
       search: null,
     };
   },
-  publicarMusica() {},
-  publicarPodcast() {},
 };
 </script>
 <style lang="scss" scoped>
@@ -94,11 +58,6 @@ export default {
 .home-button {
   background-color: #525252;
   margin: 0 50px 0 30px;
-}
-
-.menuDropDown {
-  color: #1e1e1e;
-  font-size: 20px;
 }
 
 .search-icon {
