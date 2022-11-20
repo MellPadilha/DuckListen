@@ -3,9 +3,9 @@
     show-if-above
     side="left"
     :width="280"
-    flat
     :breakpoint="200"
     class="bg-black text-white"
+    style="z-index: 999"
   >
     <q-scroll-area class="fit">
       <div class="row">

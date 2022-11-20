@@ -7,6 +7,10 @@ const routes = [
         path: "",
         component: () => import("pages/HomePage.vue"),
       },
+      {
+        path: "player",
+        component: () => import("components/GPlayer.vue"),
+      },
     ],
   },
 
