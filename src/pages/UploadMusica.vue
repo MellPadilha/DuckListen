@@ -104,7 +104,9 @@
       </div>
     </div>
   </div>
-  <player-menu />
+  <footer class="player">
+    <player-menu />
+  </footer>
 </template>
 <script>
 import PlayerMenu from "../components/PlayerMenu.vue";
@@ -133,6 +135,11 @@ export default {
   margin-right: auto;
 }
 
+.player {
+  margin-top: 5%;
+  justify-content: center;
+  align-items: center;
+}
 .album {
   margin-top: 10px;
 }

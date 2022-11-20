@@ -77,7 +77,9 @@
       </div>
     </div>
   </div>
-  <player-menu />
+  <footer class="player">
+    <player-menu />
+  </footer>
 </template>
 <script>
 import PlayerMenu from "../components/PlayerMenu.vue";
@@ -108,6 +110,11 @@ export default {
 
 .album {
   margin-top: 10px;
+}
+.player {
+  margin-top: 2%;
+  justify-content: center;
+  align-items: center;
 }
 
 .textoSelecione {

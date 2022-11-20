@@ -28,7 +28,7 @@
           <q-list>
             <q-item clickable>
               <q-item-section>
-                <q-item-label class="menuDropDown" on-click="publicarMusica()"
+                <q-item-label class="menuDropDown" @click="publicarMusica">
                   >Publicar música</q-item-label
                 >
               </q-item-section>
@@ -36,7 +36,7 @@
 
             <q-item clickable>
               <q-item-section>
-                <q-item-label class="menuDropDown" on-click="publicarPodcast()">
+                <q-item-label class="menuDropDown" @click="publicarPodcast">
                   <q-side-link to="UploadPodcast"
                     >Publicar podcast</q-side-link
                   ></q-item-label
