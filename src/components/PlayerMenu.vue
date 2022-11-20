@@ -10,7 +10,8 @@
         alt=""
         id="gif"
       />
-      <i class="fas fa-heart" id="previous"></i>
+      <q-btn rounded outline> <i class="fas fa-heart" id="previous"></i></q-btn>
+
       <div>
         <span id="masterSongName">Duck - </span>
         <span id="masterSongName">When i choose </span>
@@ -18,14 +19,27 @@
     </div>
     <div class="bottom">
       <!-- fontawesome icons -->
-      <i class="fas fa-3x fa-random" id="previous"></i>
-      <i class="fas fa-3x fa-step-backward" id="previous"></i>
-      <i class="far fa-3x fa-play-circle" id="masterPlay"></i>
-      <i class="fas fa-3x fa-step-forward" id="next"></i>
-      <i class="fas fa-3x fa-refresh" id="previous"></i>
+      <q-btn class="laterais" rounded outline>
+        <i class="fas fa-3x fa-random" @click="item" id="previous"></i
+      ></q-btn>
+
+      <q-btn rounded outline>
+        <i class="fas fa-3x fa-step-backward" id="previous"></i
+      ></q-btn>
+      <q-btn rounded outline>
+        <i class="far fa-3x fa-play-circle" id="masterPlay"></i
+      ></q-btn>
+      <q-btn rounded outline>
+        <i class="fas fa-3x fa-step-forward" id="next"></i
+      ></q-btn>
+      <q-btn class="laterais" rounded outline>
+        <i class="fas fa-3x fa-refresh" id="previous"></i
+      ></q-btn>
     </div>
     <div class="volume">
-      <i class="fas fa-3x fa-volume-up" id="next"></i>
+      <q-btn class="volumeProgress" rounded outline>
+        <i class="fas fa-3x fa-volume-up" id="next"></i
+      ></q-btn>
     </div>
     <q-slider class="sliderVolume" />
   </div>
@@ -53,20 +67,25 @@ export default {
   font-size: 20px;
 }
 
-.fa-heart {
-  padding-left: 20px;
-}
-
 .linha {
   width: 90%;
 }
 
 .sliderVolume {
-  padding-left: 5px;
   width: 10%;
   color: #fdc200;
-  margin-top: 28px;
+  margin-top: 20px;
   margin-right: 5%;
+}
+
+.volumeProgress {
+  font-size: 8px;
+}
+
+.laterais {
+  font-size: 8px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .sliderProgress {
@@ -77,19 +96,15 @@ export default {
   display: flex;
 }
 
-.fa-3x {
-  padding-left: 35px;
-}
-
 .volume {
   color: #fdc200;
   margin-top: 20px;
-  margin-left: 10%;
 }
 
 .corpo {
   background-color: #737373;
   display: flex;
+  text-align: center;
 }
 
 .corpoProgress {
