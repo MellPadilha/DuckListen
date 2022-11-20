@@ -29,7 +29,7 @@
             <q-item clickable>
               <q-item-section>
                 <q-item-label class="menuDropDown" @click="publicarMusica">
-                  >Publicar música</q-item-label
+                  Publicar música</q-item-label
                 >
               </q-item-section>
             </q-item>
