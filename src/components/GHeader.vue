@@ -1,41 +1,38 @@
 <template>
-  <side-menu />
-  <q-card class="toolbar text-white" flat>
-    <div class="row header-content">
-      <div>
-        <q-btn class="home-button" icon="fa-solid fa-house" round />
-      </div>
-      <q-input
-        rounded
-        outlined
-        v-model="search"
-        class="search-bar"
-        :placeholder="$t('search')"
-      >
-        <template v-slot:prepend>
-          <q-icon class="search-icon" name="fa-solid fa-magnifying-glass" />
-        </template>
-      </q-input>
-      <div class="absolute-right">
-        <q-btn
-          class="user-button"
-          icon="fa-regular fa-user"
+  <q-header class="header">
+    <q-toolbar class="toolbar text-white">
+      <div class="row header-content">
+        <div>
+          <q-btn class="home-button" icon="fa-solid fa-house" round />
+        </div>
+        <q-input
           rounded
-          outline
-          no-caps
-          :label="$t('default_user_name')"
-        />
+          outlined
+          v-model="search"
+          class="search-bar"
+          :placeholder="$t('search')"
+        >
+          <template v-slot:prepend>
+            <q-icon class="search-icon" name="fa-solid fa-magnifying-glass" />
+          </template>
+        </q-input>
+        <div class="absolute-right" style="padding-top: 10px">
+          <q-btn
+            class="user-button"
+            icon="fa-regular fa-user"
+            rounded
+            outline
+            no-caps
+            :label="$t('default_user_name')"
+          />
+        </div>
       </div>
-    </div>
-  </q-card>
+    </q-toolbar>
+  </q-header>
 </template>
 <script>
-import SideMenu from "./SideMenu.vue";
 export default {
   name: "GHeader",
-  components: {
-    SideMenu,
-  },
   data() {
     return {
       leftDrawerOpen: true,
@@ -45,10 +42,13 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.header {
+  background: #1e1e1e;
+  padding: 5px;
+}
 .toolbar {
   background: #1e1e1e;
   height: 50px;
-  margin-left: 280px;
 }
 
 .header-content {
