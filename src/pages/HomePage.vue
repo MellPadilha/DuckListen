@@ -11,7 +11,9 @@
       </q-card>
     </div>
   </div>
-  <player-menu />
+  <footer class="player">
+    <player-menu />
+  </footer>
 </template>
 <script>
 import { onBeforeMount } from "vue-demi";
@@ -66,6 +68,11 @@ export default {
   border-radius: 8px;
 }
 
+.player {
+  margin-top: 20%;
+  justify-content: center;
+  align-items: center;
+}
 .image-container {
   padding: 20px;
   color: $dark-grey;
