@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="publicar-musicas">Publicar Musicas</h3>
+    <h3 class="publicar-musicas">Publicar Podcast</h3>
     <div>
       <div class="inputs">
         <q-input
@@ -77,11 +77,15 @@
       </div>
     </div>
   </div>
+  <player-menu />
 </template>
 <script>
-import { onBeforeMount } from "vue-demi";
+import PlayerMenu from "../components/PlayerMenu.vue";
 export default {
   name: "UploadPodcast",
+  components: {
+    PlayerMenu,
+  },
   data() {
     return {
       playList: null,

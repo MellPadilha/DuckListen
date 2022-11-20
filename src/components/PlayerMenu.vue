@@ -1,75 +1,58 @@
 <template>
-  <side-menu />
   <q-card class="toolbar text-white" flat>
     <div class="row header-content">
-      <div>
-        <q-btn class="home-button" icon="fa-solid fa-house" round />
+      <div class="bottom">
+        <div class="icons">
+          <!-- fontawesome icons -->
+          <q-btn rounded no-caps style="margin-right: 50px; font-size: 8px"
+            ><i class="fas fa-3x fa-random" id="next"></i
+          ></q-btn>
+          <q-btn rounded no-caps>
+            <i class="fas fa-3x fa-step-backward color" id="previous"></i>
+          </q-btn>
+          <q-btn rounded no-caps
+            ><i class="far fa-3x fa-play-circle" id="masterPlay"></i
+          ></q-btn>
+
+          <q-btn rounded no-caps
+            ><i class="fas fa-3x fa-step-forward" id="next"></i
+          ></q-btn>
+          <q-btn rounded no-caps style="margin-left: 50px; font-size: 8px"
+            ><i class="fas fa-3x fa-refresh" id="next"></i
+          ></q-btn>
+        </div>
       </div>
-      <q-input
-        rounded
-        outlined
-        v-model="search"
-        class="search-bar"
-        :placeholder="$t('search')"
-      >
-        <template v-slot:prepend>
-          <q-icon class="search-icon" name="fa-solid fa-magnifying-glass" />
-        </template>
-      </q-input>
-      <div class="absolute-right">
-        <q-btn-dropdown
-          class="user-button"
-          icon="fa-regular fa-user"
-          rounded
-          outline
-          label="Username"
-          no-caps
-        >
-          <q-list>
-            <q-item clickable>
-              <q-item-section>
-                <q-item-label class="menuDropDown" @click="refresh"
-                  >Publicar música</q-item-label
-                >
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable>
-              <q-item-section>
-                <q-item-label class="menuDropDown" @click="refresh">
-                  <q-side-link to="UploadPodcast"
-                    >Publicar podcast</q-side-link
-                  ></q-item-label
-                >
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable>
-              <q-item-section>
-                <q-item-label class="menuDropDown"
-                  >Ver análise de conteudo</q-item-label
-                >
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable>
-              <q-item-section>
-                <q-item-label class="menuDropDown">Deslogar</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-btn-dropdown>
+      <div class="volume">
+        <q-btn rounded no-caps style="margin-left: 50px; font-size: 8px"
+          ><i class="fas fa-3x fa-volume-up" id="next"></i
+        ></q-btn>
+        <input
+          type="range"
+          name="range"
+          id="myProgressBar"
+          min="0"
+          value="0"
+          max="100"
+        />
+      </div>
+      <div class="songInfo">
+        <input
+          class="songInfo"
+          type="range"
+          name="range"
+          id="myProgressBar"
+          min="0"
+          value="0"
+          max="100"
+        />
       </div>
     </div>
   </q-card>
 </template>
 <script>
-import SideMenu from "./SideMenu.vue";
 export default {
-  name: "GHeader",
-  components: {
-    SideMenu,
-  },
+  name: "PlayerMenu",
+
   data() {
     return {
       leftDrawerOpen: true,
@@ -85,6 +68,7 @@ export default {
   background: #1e1e1e;
   height: 50px;
   margin-left: 280px;
+  padding: auto;
 }
 
 .header-content {
@@ -162,5 +146,52 @@ export default {
 
 :deep(.q-field--dense) {
   height: 40px !important;
+}
+
+.row {
+  background-color: #737373;
+}
+
+.bottom {
+  height: 10%;
+  display: flex;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.songInfo {
+  width: 100%;
+  margin-left: 20%;
+  margin-right: 37%;
+}
+
+.volume {
+  align-items: center;
+  margin-right: 15px;
+  margin-top: 25px;
+}
+
+.fa-3x {
+  color: #fdc200 0.2px solid;
+  transition: none;
+  padding: 10px;
+}
+
+.divTeste {
+  background-color: #fdc200;
+}
+
+.img {
+  height: 50%;
+  max-width: 50%;
+}
+
+.info {
+  background-color: #fdc200;
+}
+
+.icons {
+  display: flex;
 }
 </style>

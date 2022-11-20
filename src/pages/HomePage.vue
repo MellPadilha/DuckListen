@@ -11,11 +11,16 @@
       </q-card>
     </div>
   </div>
+  <player-menu />
 </template>
 <script>
 import { onBeforeMount } from "vue-demi";
+import PlayerMenu from "../components/PlayerMenu.vue";
 export default {
   name: "HomePage",
+  components: {
+    PlayerMenu,
+  },
   data() {
     return {
       playList: null,
