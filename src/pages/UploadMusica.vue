@@ -106,7 +106,6 @@
   </div>
 </template>
 <script>
-import PlayerMenu from "../components/PlayerMenu.vue";
 export default {
   name: "UploadMusica",
   data() {
