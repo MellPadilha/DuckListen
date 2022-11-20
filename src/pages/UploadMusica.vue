@@ -104,17 +104,11 @@
       </div>
     </div>
   </div>
-  <footer class="player">
-    <player-menu />
-  </footer>
 </template>
 <script>
 import PlayerMenu from "../components/PlayerMenu.vue";
 export default {
   name: "UploadMusica",
-  components: {
-    PlayerMenu,
-  },
   data() {
     return {
       playList: null,
