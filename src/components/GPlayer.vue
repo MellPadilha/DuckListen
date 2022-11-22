@@ -10,15 +10,42 @@
             <div>music</div>
             <div class="author-name">author</div>
           </div>
+          <div id="div-play">
+            <button id="btn-play" class="play"></button>
+          </div>
         </div>
+
       </q-toolbar-title>
     </q-toolbar>
   </q-footer>
 </template>
 <script>
+
 export default {
   name: "GPlayer",
+  mounted() {
+
+    const play = document.getElementById('btn-play')
+
+    var sound = new Howl({
+      src: [`../src/assets/teste.mp3`]
+    })
+
+    play.onclick = () => {
+      if (sound.playing()) {
+        sound.pause()
+        play.classList.remove('pause')
+        play.classList.add('play')
+      } else {
+        sound.play()
+        play.classList.remove('play')
+        play.classList.add('pause')
+      }
+    }
+
+  }
 };
+
 </script>
 <style lang="scss" scoped>
 .player-area {
@@ -49,4 +76,31 @@ export default {
 .author-name {
   font-size: 15px;
 }
+
+#btn-play {
+  font-size: 3em;
+  border: 3px solid #FDC200;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -40px 0 0 -25px;
+}
+
+.play {
+  background: url('../assets/play.png') no-repeat center transparent;
+}
+
+.pause {
+  background: url('../assets/pause.png') no-repeat center transparent;
+}
+
+.div-play {
+  background: transparent;
+}
 </style>
+
