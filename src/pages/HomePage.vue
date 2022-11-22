@@ -47,22 +47,22 @@ export default {
   methods: {
     loadLists() {
       this.playList = [
-        { name: "Pop anos 2000’s", image: null },
+        { name: "Pop anos 2000’s", image: "src/assets/logo_duck.svg" },
         { name: "As melhores musicas", image: "src/assets/logo_duck.svg" },
-        { name: "Musicas classicas", image: null },
-        { name: "K-pop: As melhoes", image: null },
-        { name: "Rock pesadão", image: null },
-        { name: "Funk br Raiz", image: null },
+        { name: "Musicas classicas", image: "src/assets/logo_duck.svg" },
+        { name: "K-pop: As melhoes", image: "src/assets/logo_duck.svg" },
+        { name: "Rock pesadão", image: "src/assets/logo_duck.svg" },
+        { name: "Funk br Raiz", image: "src/assets/logo_duck.svg" },
       ];
       this.recomendationList = [
         { name: "Daily Mix 1", image: "src/assets/logo_duck.svg" },
-        { name: "Daily Mix 2", image: null },
-        { name: "Daily Mix 3", image: null },
-        { name: "Daily Mix 4", image: null },
-        { name: "Daily Mix 5", image: null },
-        { name: "Today's Top Hits", image: null },
-        { name: "Viral Hits", image: null },
-        { name: "Pop Up", image: null },
+        { name: "Daily Mix 2", image: "src/assets/logo_duck.svg" },
+        { name: "Daily Mix 3", image: "src/assets/logo_duck.svg" },
+        { name: "Daily Mix 4", image: "src/assets/logo_duck.svg" },
+        { name: "Daily Mix 5", image: "src/assets/logo_duck.svg" },
+        { name: "Today's Top Hits", image: "src/assets/logo_duck.svg" },
+        { name: "Viral Hits", image: "src/assets/logo_duck.svg" },
+        { name: "Pop Up", image: "src/assets/logo_duck.svg" },
       ];
     },
   },

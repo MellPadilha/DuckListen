@@ -48,14 +48,18 @@
       </div>
     </q-scroll-area>
   </q-drawer>
+  <upload-musica v-model="openNewUpload" />
 </template>
 <script>
+import UploadMusica from "./UploadMusica.vue";
 export default {
+  components: { UploadMusica },
   name: "SideMenu",
   data() {
     return {
       optionsList: null,
       playlistList: null,
+      openNewUpload: true,
     };
   },
   beforeMount() {
@@ -81,9 +85,11 @@ export default {
           action: () => {},
         },
         {
-          name: this.$t("my_publications"),
+          name: this.$t("new_publications"),
           icon: "fa-solid fa-compact-disc",
-          action: () => {},
+          action: () => {
+            this.openNewUpload = true;
+          },
         },
       ];
       this.playlistList = [
