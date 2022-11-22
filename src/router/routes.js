@@ -8,8 +8,8 @@ const routes = [
         component: () => import("pages/HomePage.vue"),
       },
       {
-        path: "player",
-        component: () => import("components/GPlayer.vue"),
+        path: "library",
+        component: () => import("pages/LibraryPage.vue"),
       },
     ],
   },

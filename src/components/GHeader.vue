@@ -3,7 +3,12 @@
     <q-toolbar class="toolbar text-white">
       <div class="row header-content">
         <div>
-          <q-btn class="home-button" icon="fa-solid fa-house" round />
+          <q-btn
+            class="home-button"
+            icon="fa-solid fa-house"
+            round
+            @click="$router.push('/')"
+          />
         </div>
         <q-input
           rounded

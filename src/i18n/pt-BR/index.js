@@ -10,4 +10,7 @@ export default {
   default_user_name: "Sem nome",
   input_music_name: "Digite o nome da música",
   input_author_name: "Digite o(s) nome(s) do(s) artista(s)",
+  input_playlist_name: "Digite o nome da playlist",
+  input_playlist_description: "Digite uma descrição",
+  new_playlist: "Nova playlist",
 };

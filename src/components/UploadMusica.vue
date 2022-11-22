@@ -2,7 +2,7 @@
   <q-dialog>
     <q-card class="bg-secondary card">
       <q-form class="q-ma-lg" @submit="onSubmit">
-        <p class="publicar-musicas">{{ $t("new_publications") }}</p>
+        <p class="title">{{ $t("new_publications") }}</p>
         <div class="inputs">
           <q-file
             color="primary"
@@ -53,8 +53,7 @@
             v-model="music.name"
             class="input-area"
             :placeholder="$t('input_music_name')"
-          >
-          </q-input>
+          />
 
           <q-input
             rounded
@@ -62,17 +61,16 @@
             v-model="music.authorName"
             class="input-area"
             :placeholder="$t('input_author_name')"
-          >
-          </q-input>
+          />
         </div>
-        <div class="publicar-musicas enviarCorpo">
+        <div class="title">
           <q-btn
             class="send-button text-black"
             rounded
             no-caps
             color="primary"
             icon-right="fa-regular fa-paper-plane"
-            label="Enviar "
+            label="Enviar"
             type="submit"
           />
         </div>
@@ -106,7 +104,7 @@ export default {
 .card {
   border-radius: 20px;
 }
-.publicar-musicas {
+.title {
   text-align: center;
   margin: 15px 0;
   font-size: 25px;

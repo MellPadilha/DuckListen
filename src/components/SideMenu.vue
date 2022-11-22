@@ -49,17 +49,20 @@
     </q-scroll-area>
   </q-drawer>
   <upload-musica v-model="openNewUpload" />
+  <new-playlist v-model="openNewPlaylist" />
 </template>
 <script>
 import UploadMusica from "./UploadMusica.vue";
+import newPlaylist from "./newPlaylist.vue";
 export default {
-  components: { UploadMusica },
+  components: { UploadMusica, newPlaylist },
   name: "SideMenu",
   data() {
     return {
       optionsList: null,
       playlistList: null,
       openNewUpload: false,
+      openNewPlaylist: false,
     };
   },
   beforeMount() {
@@ -71,13 +74,17 @@ export default {
         {
           name: this.$t("library"),
           icon: "fa-solid fa-list",
-          action: () => {},
+          action: () => {
+            this.$router.push("/library");
+          },
         },
         {
           name: this.$t("create_playlist"),
           icon: "fa-solid fa-plus",
           class: "plus-btn",
-          action: () => {},
+          action: () => {
+            this.openNewPlaylist = true;
+          },
         },
         {
           name: this.$t("favorites"),
