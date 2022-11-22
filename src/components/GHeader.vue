@@ -39,6 +39,8 @@ export default {
       search: null,
     };
   },
+  publicarMusica() {},
+  publicarPodcast() {},
 };
 </script>
 <style lang="scss" scoped>
@@ -58,6 +60,11 @@ export default {
 .home-button {
   background-color: #525252;
   margin: 0 50px 0 30px;
+}
+
+.menuDropDown {
+  color: #1e1e1e;
+  font-size: 20px;
 }
 
 .search-icon {
