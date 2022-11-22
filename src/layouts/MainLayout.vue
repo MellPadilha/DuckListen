@@ -10,9 +10,8 @@
 </template>
 <script>
 import GHeader from "src/components/GHeader.vue";
-
-import SideMenu from "src/components/SideMenu.vue";
 import GPlayer from "src/components/GPlayer.vue";
+import SideMenu from "src/components/SideMenu.vue";
 export default {
   name: "MainLayout",
   components: {
@@ -21,5 +20,4 @@ export default {
     SideMenu,
   },
 };
-
 </script>
