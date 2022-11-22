@@ -59,7 +59,7 @@ export default {
     return {
       optionsList: null,
       playlistList: null,
-      openNewUpload: true,
+      openNewUpload: false,
     };
   },
   beforeMount() {
