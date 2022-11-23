@@ -47,6 +47,7 @@
             color="primary"
             label="Continuar"
             type="submit"
+            v-close-popup
           />
         </div>
       </q-form>

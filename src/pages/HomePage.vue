@@ -39,11 +39,12 @@ export default {
     return {
       playList: null,
       recomendationList: null,
-      posts: [],
+      musics: [],
     };
   },
   beforeMount() {
     this.loadLists();
+    this.getMusics();
   },
   methods: {
     loadLists() {
@@ -66,11 +67,11 @@ export default {
         { name: "Pop Up", image: "src/assets/logo_duck.svg" },
       ];
     },
-    getPosts() {
+    getMusics() {
       this.$axios
-        .get("http://localhost:3000/posts")
+        .get("http://localhost:3000/musics")
         .then((response) => {
-          this.posts = response.data;
+          this.musics = response.data;
         })
         .catch((err) => {
           console.log("err: ", err);

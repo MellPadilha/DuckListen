@@ -10,23 +10,29 @@
     </q-list>
   </div>
 </template>
-
 <script>
 export default {
   name: "LibraryPage",
   data() {
     return {
-      musicList: [
-        { id: 1, name: "Daily Mix 1" },
-        { id: 2, name: "Daily Mix 2" },
-        { id: 3, name: "Daily Mix 3" },
-        { id: 4, name: "Daily Mix 4" },
-        { id: 5, name: "Daily Mix 5" },
-        { id: 6, name: "Today's Top Hits" },
-        { id: 7, name: "Viral Hits" },
-        { id: 8, name: "Pop Up" },
-      ],
+      musicList: null,
     };
+  },
+  beforeMount() {
+    this.getMusics();
+  },
+  methods: {
+    getMusics() {
+      this.$axios
+        .get(`${process.env.API}/musics`)
+        .then((response) => {
+          this.musicList = response.data;
+          console.log(this.musicList);
+        })
+        .catch((err) => {
+          console.log("err: ", err);
+        });
+    },
   },
 };
 </script>

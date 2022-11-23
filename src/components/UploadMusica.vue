@@ -72,6 +72,7 @@
             icon-right="fa-regular fa-paper-plane"
             label="Enviar"
             type="submit"
+            v-close-popup
           />
         </div>
       </q-form>
@@ -79,6 +80,7 @@
   </q-dialog>
 </template>
 <script>
+import { useQuasar } from "quasar";
 export default {
   name: "UploadMusica",
   data() {
@@ -91,11 +93,39 @@ export default {
         name: null,
         authorName: null,
       },
+      $q: useQuasar(),
     };
   },
   methods: {
     onSubmit() {
-      console.log("coloca o envio aqui", this.music);
+      let formData = new FormData();
+      formData.append("name", this.music.name);
+      formData.append("author", this.music.authorName);
+      formData.append(
+        "image",
+        this.music.uploadImage,
+        this.music.uploadImage + ".png"
+      );
+      formData.append(
+        "audio",
+        this.music.uploadMusic,
+        this.music.uploadMusic + ".mp3"
+      );
+
+      this.$axios
+        .post(`${process.env.API}/UploadMusics`, formData)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log("err: ", err);
+        });
+
+      this.$q.notify({
+        color: "green-4",
+        textColor: "white",
+        message: "Publicação feita com sucesso",
+      });
     },
   },
 };

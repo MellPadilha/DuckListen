@@ -50,6 +50,9 @@ module.exports = configure(function (/* ctx */) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
     build: {
+      env: {
+        API: "http://localhost:3000",
+      },
       target: {
         browser: ["es2019", "edge88", "firefox78", "chrome87", "safari13.1"],
         node: "node16",
@@ -109,7 +112,7 @@ module.exports = configure(function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: [],
+      plugins: ["Notify"],
     },
 
     // animations: 'all', // --- includes all animations
