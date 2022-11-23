@@ -39,6 +39,7 @@ export default {
     return {
       playList: null,
       recomendationList: null,
+      posts: [],
     };
   },
   beforeMount() {
@@ -64,6 +65,16 @@ export default {
         { name: "Viral Hits", image: "src/assets/logo_duck.svg" },
         { name: "Pop Up", image: "src/assets/logo_duck.svg" },
       ];
+    },
+    getPosts() {
+      this.$axios
+        .get("http://localhost:3000/posts")
+        .then((response) => {
+          this.posts = response.data;
+        })
+        .catch((err) => {
+          console.log("err: ", err);
+        });
     },
   },
 };
