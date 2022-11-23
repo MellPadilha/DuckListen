@@ -69,6 +69,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+// TOP PAGE
 .title {
   margin: 30px 10px 10px;
   font-size: 30px;
@@ -77,16 +78,34 @@ export default {
   margin: 50px 30px 20px;
 }
 
-.second-area {
-  margin: 0 30px 20px;
+.playlist-name {
+  width: 200px;
+  font-size: 20px;
+  margin: auto 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
 .card-playlist {
   width: 340px;
   height: 100px;
   background-color: $dark-grey;
   border-radius: 8px;
   margin: 0 7.5px 15px 7.5px;
+}
+
+// RECOMMEND AREA
+.second-area {
+  margin: 0 30px 20px;
+}
+
+.playlist-name-second {
+  font-size: 20px;
+  text-align: center;
+  margin: 20px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-second-area {
@@ -120,23 +139,5 @@ export default {
   border-radius: 8px;
   padding: 45px;
   color: $dark-grey;
-}
-
-.playlist-name {
-  width: 200px;
-  font-size: 20px;
-  margin: auto 15px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.playlist-name-second {
-  font-size: 20px;
-  text-align: center;
-  margin: 20px 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 </style>
