@@ -1,13 +1,25 @@
 /*
+  criar npm
+
   configurar heroku, nodemon e firebase
 
-  heroku builds:create -a ducklisten-backend
- 	https://ducklisten-backend.herokuapp.com/
+  heroku
+  https://devcenter.heroku.com/articles/heroku-cli
 
+  heroku builds- listar e criar apps heroku
+  cmd: heroku plugins:install heroku-builds
+
+  heroku builds- comando para criar no local dir
+  cmd: builds:create -a ducklisten-backend
+
+  nodemon - reseta servidor toda vez qeu tem mudança no código
   https://nodemon.io/
 
- https://firebase.google.com/docs/firestore/quickstart#node.js
-  npm install firebase --admin --save
+  firebase
+  https://firebase.google.com/docs/firestore/quickstart#node.js
+  cmd: npm install firebase --admin --save
+
+  testes na porta 3000- certificar que está na pasta backend para os testes
 */
 
 /*
