@@ -39,10 +39,12 @@ export default {
     return {
       playList: null,
       recomendationList: null,
+      musics: [],
     };
   },
   beforeMount() {
     this.loadLists();
+    this.getMusics();
   },
   methods: {
     loadLists() {
@@ -64,6 +66,16 @@ export default {
         { name: "Viral Hits", image: "src/assets/logo_duck.svg" },
         { name: "Pop Up", image: "src/assets/logo_duck.svg" },
       ];
+    },
+    getMusics() {
+      this.$axios
+        .get("http://localhost:3000/musics")
+        .then((response) => {
+          this.musics = response.data;
+        })
+        .catch((err) => {
+          console.log("err: ", err);
+        });
     },
   },
 };
