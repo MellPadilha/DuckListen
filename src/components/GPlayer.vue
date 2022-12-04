@@ -33,17 +33,15 @@
             <div>
               <q-btn id="ok" label="Ok" type="submit" color="primary" />
             </div>
-
-
           </q-form>
 
           <q-linear-progress
-              id="bar"
-              dark
-              size="10px"
-              :value="progress1"
-              color="warning"
-            />
+            id="bar"
+            dark
+            size="10px"
+            :value="progress1"
+            color="warning"
+          />
         </div>
       </q-toolbar-title>
     </q-toolbar>
@@ -118,6 +116,11 @@ export default {
         play.classList.remove("play");
         play.classList.add("pause");
       }
+    };
+  },
+  data() {
+    return {
+      showLibray: false,
     };
   },
   setup() {
@@ -216,7 +219,7 @@ export default {
   top: 50%;
   left: 47%;
   margin: -35px 0 0 -25px;
-  background: url('../assets/previous.png') no-repeat center transparent;
+  background: url("../assets/previous.png") no-repeat center transparent;
 }
 
 #btn-next {
@@ -231,7 +234,7 @@ export default {
   top: 50%;
   left: 53%;
   margin: -35px 0 0 -25px;
-  background: url('../assets/next.png') no-repeat center transparent;
+  background: url("../assets/next.png") no-repeat center transparent;
 }
 
 #vol {
@@ -262,5 +265,4 @@ export default {
   width: 2px;
   height: 2px;
 }
-
 </style>
