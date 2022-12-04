@@ -2,7 +2,7 @@
   <p class="title">{{ $t("library") }}</p>
   <div v-for="item in musicList" :key="item.name">
     <q-list separator>
-      <q-item clickable v-ripple>
+      <q-item clickable v-ripple @click="emitMusic(item)">
         <q-item-section class="item-name"
           >{{ item.id }} - {{ item.name }}</q-item-section
         >
@@ -21,17 +21,20 @@ export default {
   beforeMount() {
     this.getMusics();
   },
+  emits: ["music"],
   methods: {
     getMusics() {
       this.$axios
         .get(`${process.env.API}/musics`)
         .then((response) => {
           this.musicList = response.data;
-          console.log(this.musicList);
         })
         .catch((err) => {
           console.log("err: ", err);
         });
+    },
+    emitMusic(item) {
+      // this.$piniaStores.musicsStore.selectMusic(item);
     },
   },
 };

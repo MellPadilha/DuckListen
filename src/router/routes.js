@@ -9,7 +9,7 @@ const routes = [
       },
       {
         path: "library",
-        component: () => import("pages/LibraryPage.vue"),
+        component: () => import("src/components/LibraryPage.vue"),
       },
     ],
   },
