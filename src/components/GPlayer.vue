@@ -15,6 +15,7 @@
           </div>
           <button id="btn-next"></button>
           <button id="btn-return"></button>
+
           <q-form @submit="onSubmit" id="vol" class="volume">
             <q-knob
               name="volume"
@@ -35,13 +36,15 @@
             </div>
           </q-form>
 
+          <div id="time"></div>
           <q-linear-progress
             id="bar"
             dark
-            size="10px"
-            :value="progress1"
             color="warning"
+            size="10px"
+            :value="progress"
           />
+          <div id="duration"></div>
         </div>
       </q-toolbar-title>
     </q-toolbar>
@@ -59,11 +62,18 @@ const musicsStores = useMusicsStore();
 
 export default {
   name: "GPlayer",
+  data() {
+    return {
+      progress: 0,
+      buffer: 0,
+    };
+  },
   mounted() {
     const play = document.getElementById("btn-play");
     const next = document.getElementById("btn-next");
     const back = document.getElementById("btn-return");
 
+    //Inicializa as músicas
     play.onclick = () => {
       if (sound.playing()) {
         sound.pause();
@@ -76,6 +86,7 @@ export default {
       }
     };
 
+    //Avança para a próxima música
     next.onclick = () => {
       if (index >= playlist.length - 1) {
         index = 0;
@@ -98,6 +109,7 @@ export default {
       }
     };
 
+    //Retornar para a música anterior
     back.onclick = () => {
       if (index <= 0) {
         index = playlist.length - 1;
@@ -119,7 +131,50 @@ export default {
         play.classList.add("pause");
       }
     };
+
+    //Converte tempo em minutos e segundos
+    function convertTime(time) {
+      let hours = Math.floor(time / 3600);
+      let mins = Math.floor(time / 60) - hours * 60;
+      let secs = Math.floor(time % 60);
+      let output =
+        mins.toString().padStart(2, "0") +
+        ":" +
+        secs.toString().padStart(2, "0");
+      return output;
+    }
+
+    //Atualiza os contadores das músicas
+    var updateTime = window.setInterval(function () {
+      document.getElementById("time").innerHTML = convertTime(sound.seek());
+      document.getElementById("duration").innerHTML = convertTime(
+        sound._duration
+      );
+    }, 500);
+
+    //Atualiza a barra de progresso
+    this.interval = setInterval(() => {
+      if (this.progress >= 1) {
+        this.progress = 0;
+        this.buffer = 0;
+        return;
+      }
+
+      this.progress = sound.seek() / sound._duration;
+    });
+
+    this.bufferInterval = setInterval(() => {
+      if (this.buffer < 1) {
+        this.buffer = sound.seek() / sound._duration;
+      }
+    });
   },
+
+  beforeUnmount() {
+    clearInterval(this.interval);
+    clearInterval(this.bufferInterval);
+  },
+
   setup() {
     const submitResult = ref([]);
 
@@ -217,7 +272,8 @@ export default {
 
   position: absolute;
   top: 50%;
-  left: 47%;
+  right: 51.7%;
+
   margin: -35px 0 0 -25px;
   background: url("../assets/previous.png") no-repeat center transparent;
 }
@@ -232,8 +288,8 @@ export default {
 
   position: absolute;
   top: 50%;
-  left: 53%;
-  margin: -35px 20px 0 -25px;
+  left: 52.6%;
+  margin: -35px 0 0 -25px;
   background: url("../assets/next.png") no-repeat center transparent;
 }
 
@@ -264,5 +320,19 @@ export default {
 #ok {
   width: 2px;
   height: 2px;
+}
+
+#time {
+  position: absolute;
+  top: 50%;
+  right: 69%;
+  margin: 15px 0 0 -100px;
+}
+
+#duration {
+  position: absolute;
+  top: 50%;
+  right: 24.8%;
+  margin: 15px 0 0 -100px;
 }
 </style>
