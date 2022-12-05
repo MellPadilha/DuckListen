@@ -64,7 +64,7 @@
               class="input-area"
               :placeholder="$t('input_author_name')"
             />
-            <div class="title">
+            <div v-if="musicType" class="title">
               <q-btn
                 class="send-button text-black"
                 rounded
@@ -72,8 +72,20 @@
                 color="primary"
                 icon-right="fa-regular fa-paper-plane"
                 label="Enviar"
-                type="submit"
+                @click="onSubmit"
                 v-close-popup
+              />
+            </div>
+            <div v-if="!musicType" class="title">
+              <q-btn
+                class="send-button text-black"
+                rounded
+                no-caps
+                color="primary"
+                icon-right="fa-regular fa-paper-plane"
+                label="Enviar"
+                v-close-popup
+                @click="onSubmitPodcast"
               />
             </div>
           </div>
@@ -103,6 +115,27 @@ export default {
   },
   methods: {
     onSubmit() {
+      let formData = new FormData();
+      formData.append("name", this.music.name);
+      formData.append("author", this.music.authorName);
+      formData.append("audio", this.music.uploadMusic);
+
+      this.$axios
+        .post(`${process.env.API}/UploadMusics`, formData)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log("err: ", err);
+        });
+
+      this.$q.notify({
+        color: "green-4",
+        textColor: "white",
+        message: "Publicação feita com sucesso",
+      });
+    },
+    onSubmitPodcast() {
       let formData = new FormData();
       formData.append("name", this.music.name);
       formData.append("author", this.music.authorName);
