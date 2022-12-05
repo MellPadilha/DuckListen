@@ -13,4 +13,6 @@ export default {
   input_playlist_name: "Digite o nome da playlist",
   input_playlist_description: "Digite uma descrição",
   new_playlist: "Nova playlist",
+  musics: "Músicas",
+  podcasts: "Podcasts",
 };

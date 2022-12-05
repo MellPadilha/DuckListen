@@ -4,76 +4,79 @@
       <q-form class="q-ma-lg" @submit="onSubmit">
         <p class="title">{{ $t("new_publications") }}</p>
         <div class="inputs">
-          <q-file
-            color="primary"
-            outlined
-            rounded
-            label-color="primary"
-            v-model="music.uploadMusic"
-            label="Selecione a música"
-            accept=".mp3"
-            class="uploader-area"
-          >
-            <template v-slot:append>
-              <q-icon
-                class="input-icon q-mr-md"
-                rounded
-                outlined
-                name="fa-solid fa-arrow-up-from-bracket"
-                color="primary"
-                size="20px"
-              />
-            </template>
-          </q-file>
-          <q-file
-            accept=".jpg, .png, image/*"
-            color="primary"
-            outlined
-            rounded
-            label-color="primary"
-            v-model="music.uploadImage"
-            label="Selecione a capa"
-            class="uploader-area"
-          >
-            <template v-slot:append>
-              <q-icon
-                class="input-icon q-mr-md"
-                rounded
-                outlined
-                name="fa-solid fa-arrow-up-from-bracket"
-                color="primary"
-                size="20px"
-              />
-            </template>
-          </q-file>
+          <div class="select-type-area">Tipo de postagem:</div>
+          <div class="row select-type-area">
+            <q-btn
+              class="q-mr-md btn-type"
+              label="Música"
+              @click="changeType('music')"
+              outline
+              rounded
+              no-caps
+            />
+            <q-btn
+              class="btn-type"
+              label="Podcast"
+              @click="changeType('podcast')"
+              outline
+              rounded
+              no-caps
+            />
+          </div>
+          <div v-if="typeSelected">
+            <q-file
+              color="primary"
+              outlined
+              rounded
+              label-color="primary"
+              v-model="music.uploadMusic"
+              :label="musicType ? 'Selecione a música' : 'Selecione o podcast'"
+              accept=".mp3"
+              class="uploader-area"
+            >
+              <template v-slot:append>
+                <q-icon
+                  class="input-icon q-mr-md"
+                  rounded
+                  outlined
+                  name="fa-solid fa-arrow-up-from-bracket"
+                  color="primary"
+                  size="20px"
+                />
+              </template>
+            </q-file>
+            <q-input
+              rounded
+              outlined
+              v-model="music.name"
+              class="input-area"
+              :placeholder="
+                musicType
+                  ? 'Digite o nome da música'
+                  : 'Digite o nome do podcast'
+              "
+            />
 
-          <q-input
-            rounded
-            outlined
-            v-model="music.name"
-            class="input-area"
-            :placeholder="$t('input_music_name')"
-          />
-
-          <q-input
-            rounded
-            outlined
-            v-model="music.authorName"
-            class="input-area"
-            :placeholder="$t('input_author_name')"
-          />
-        </div>
-        <div class="title">
-          <q-btn
-            class="send-button text-black"
-            rounded
-            no-caps
-            color="primary"
-            icon-right="fa-regular fa-paper-plane"
-            label="Enviar"
-            type="submit"
-            v-close-popup
-          />
+            <q-input
+              rounded
+              outlined
+              v-model="music.authorName"
+              class="input-area"
+              :placeholder="$t('input_author_name')"
+            />
+            <div class="title">
+              <q-btn
+                class="send-button text-black"
+                rounded
+                no-caps
+                color="primary"
+                icon-right="fa-regular fa-paper-plane"
+                label="Enviar"
+                type="submit"
+                v-close-popup
+              />
+            </div>
+          </div>
         </div>
       </q-form>
     </q-card>
@@ -88,12 +91,14 @@ export default {
       playList: null,
       open: true,
       music: {
-        uploadImage: null,
         uploadMusic: null,
         name: null,
         authorName: null,
       },
       $q: useQuasar(),
+      podcastType: false,
+      musicType: false,
+      typeSelected: false,
     };
   },
   methods: {
@@ -101,19 +106,10 @@ export default {
       let formData = new FormData();
       formData.append("name", this.music.name);
       formData.append("author", this.music.authorName);
-      formData.append(
-        "image",
-        this.music.uploadImage,
-        this.music.uploadImage + ".png"
-      );
-      formData.append(
-        "audio",
-        this.music.uploadMusic,
-        this.music.uploadMusic + ".mp3"
-      );
+      formData.append("audio", this.music.uploadMusic);
 
       this.$axios
-        .post(`${process.env.API}/UploadMusics`, formData)
+        .post(`${process.env.API}/UploadPodcast`, formData)
         .then((response) => {
           console.log(response);
         })
@@ -127,6 +123,16 @@ export default {
         message: "Publicação feita com sucesso",
       });
     },
+    changeType(value) {
+      if (value === "music") {
+        this.podcastType = false;
+        this.musicType = true;
+      } else {
+        this.musicType = false;
+        this.podcastType = true;
+      }
+      this.typeSelected = true;
+    },
   },
 };
 </script>
@@ -138,6 +144,17 @@ export default {
   text-align: center;
   margin: 15px 0;
   font-size: 25px;
+}
+
+.select-type-area {
+  font-size: 18px;
+  color: $primary;
+  margin: 15px 5px;
+}
+
+.btn-type {
+  width: 100px;
+  font-size: 19px;
 }
 
 .uploader-area {
