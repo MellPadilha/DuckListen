@@ -13,7 +13,6 @@ export const useMusicsStore = defineStore("musics", {
       Loading.show();
       try {
         this.music = payload;
-        console.log(this.music);
       } catch (e) {
         Notify.create({
           color: "red",
