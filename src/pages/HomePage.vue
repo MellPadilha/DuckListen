@@ -2,7 +2,7 @@
   <div class="playlists-area row">
     <div class="col-12 title">Ouvido recentemente</div>
     <div v-for="item in playList" :key="item.id">
-      <q-card class="card-playlist" flat>
+      <q-card class="card-playlist cursor-pointer" flat>
         <div class="row card-content">
           <div v-if="!item.image" class="image-container">
             <q-icon class="image" name="fa-regular fa-image" size="40px" />
@@ -18,7 +18,7 @@
   <div class="second-area row">
     <div class="col-12 title">Recomendações para você</div>
     <div v-for="item in recomendationList" :key="item.id">
-      <q-card class="card-second-area" flat>
+      <q-card class="card-second-area cursor-pointer" flat>
         <div class="card-content">
           <div v-if="!item.image" class="image-second-area">
             <q-icon class="image" name="fa-regular fa-image" size="80px" />

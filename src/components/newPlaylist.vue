@@ -31,13 +31,20 @@
             />
           </template>
         </q-file>
-        <q-input
+        <q-select
           rounded
           outlined
-          v-model="playlist.description"
-          class="input-area"
-          :placeholder="$t('input_playlist_description')"
-          type="textarea"
+          multiple
+          v-model="playlist.musics"
+          :options="optionsName"
+          label="Escolha as músicas"
+          class="text-white q-mb-lg"
+          behavior="menu"
+          popup-content-style="  border-radius: 8px;
+            margin-top: 4px !important;
+            background-color: #4d4d4d;"
+          style="width: 100%"
+          hide-dropdown-icon
         />
         <div class="publicar-playlist">
           <q-btn
@@ -61,18 +68,53 @@ export default {
     return {
       playlist: {
         name: null,
-        description: null,
+        musics: null,
         image: null,
       },
+      options: null,
+      optionsName: [],
     };
   },
-
+  beforeMount() {
+    this.loadOptions();
+  },
   methods: {
+    loadOptions() {
+      this.$axios
+        .get(`${process.env.API}/musics`)
+        .then((response) => {
+          this.options = response.data;
+          this.options.forEach((item) => {
+            this.optionsName.push(item.name);
+          });
+        })
+        .catch((err) => {
+          console.log("err: ", err);
+        });
+    },
     onSubmit() {
       if (this.playlist.image === null) {
         this.playlist.image = "src/assets/logo_duck.svg";
       }
-      console.log("coloca o envio aqui", this.playlist);
+      let formData = new FormData();
+      formData.append("name", this.playlist.name);
+      formData.append("musics", this.playlist.musics);
+      formData.append("image", this.playlist.image);
+
+      this.$axios
+        .post(`${process.env.API}/CreatePlaylist`, formData)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log("err: ", err);
+        });
+
+      this.$q.notify({
+        color: "green-4",
+        textColor: "white",
+        message: "Playlist criada",
+      });
     },
   },
 };

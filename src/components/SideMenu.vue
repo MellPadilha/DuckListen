@@ -99,24 +99,15 @@ export default {
           },
         },
       ];
-      this.playlistList = [
-        {
-          name: this.$t("default_playlist_name", { number: "01" }),
-          action: () => {},
-        },
-        {
-          name: this.$t("default_playlist_name", { number: "02" }),
-          action: () => {},
-        },
-        {
-          name: this.$t("default_playlist_name", { number: "03" }),
-          action: () => {},
-        },
-        {
-          name: this.$t("default_playlist_name", { number: "04" }),
-          action: () => {},
-        },
-      ];
+
+      this.$axios
+        .get(`${process.env.API}/playlist`)
+        .then((response) => {
+          this.playlistList = response.data;
+        })
+        .catch((err) => {
+          console.log("err: ", err);
+        });
     },
   },
 };

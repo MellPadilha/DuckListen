@@ -233,7 +233,7 @@ export default {
   position: absolute;
   top: 50%;
   left: 53%;
-  margin: -35px 0 0 -25px;
+  margin: -35px 20px 0 -25px;
   background: url("../assets/next.png") no-repeat center transparent;
 }
 
