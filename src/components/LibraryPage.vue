@@ -11,11 +11,13 @@
   </div>
 </template>
 <script>
+import { useMusicsStore } from "src/stores/musics";
 export default {
   name: "LibraryPage",
   data() {
     return {
       musicList: null,
+      musicsStore: useMusicsStore(),
     };
   },
   beforeMount() {
@@ -34,7 +36,7 @@ export default {
         });
     },
     emitMusic(item) {
-      // this.$piniaStores.musicsStore.selectMusic(item);
+      this.musicsStore.selectMusic(item);
     },
   },
 };

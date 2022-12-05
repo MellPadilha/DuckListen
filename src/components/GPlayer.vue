@@ -3,7 +3,7 @@
     <q-toolbar>
       <q-toolbar-title>
         <div class="row card-content">
-          <div class="image-container">
+          <div class="image-container" @click="testVariable">
             <q-img class="image" src="src/assets/logo_duck.svg" width="70px" />
           </div>
           <div class="playlist-name">
@@ -48,12 +48,14 @@
   </q-footer>
 </template>
 <script>
+import { useMusicsStore } from "src/stores/musics";
 import { ref } from "vue";
 var index = 0;
 var playlist = ["../src/assets/teste.mp3", "../src/assets/teste2.mp3"];
 var sound = new Howl({
   src: [playlist[index]],
 });
+const musicsStores = useMusicsStore();
 
 export default {
   name: "GPlayer",
@@ -118,11 +120,6 @@ export default {
       }
     };
   },
-  data() {
-    return {
-      showLibray: false,
-    };
-  },
   setup() {
     const submitResult = ref([]);
 
@@ -141,6 +138,9 @@ export default {
             value,
           });
         }
+      },
+      testVariable() {
+        console.log(musicsStores.music);
       },
     };
   },
