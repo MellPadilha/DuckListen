@@ -11,7 +11,7 @@
 const { configure } = require("quasar/wrappers");
 const path = require("path");
 
-module.exports = configure(function (/* ctx */) {
+module.exports = configure(function (ctx) {
   return {
     eslint: {
       // fix: true,
@@ -50,15 +50,16 @@ module.exports = configure(function (/* ctx */) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
     build: {
-      env: {
-        API: "http://localhost:3000",
-      },
       target: {
         browser: ["es2019", "edge88", "firefox78", "chrome87", "safari13.1"],
         node: "node16",
       },
 
-      vueRouterMode: "hash", // available values: 'hash', 'history'
+      vueRouterMode: "history", // available values: 'hash', 'history'
+      env: {
+        API_URL: ctx.dev ? "http://localhost:3000/" : "https://prod.api.com",
+      },
+
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
