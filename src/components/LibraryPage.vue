@@ -28,6 +28,8 @@
           <q-item-section class="item-name"
             >{{ item.id }} - {{ item.name }}
           </q-item-section>
+
+          <q-btn icon="fa fa-trash" @click="deleteMusic(item.name)" />
         </q-item>
       </q-list>
     </div>
@@ -39,6 +41,8 @@
           <q-item-section class="item-name"
             >{{ item.id }} - {{ item.name }}
           </q-item-section>
+
+          <q-btn icon="fa fa-trash" @click="deletePodcast(item.name)" />
         </q-item>
       </q-list>
     </div>
@@ -46,6 +50,7 @@
 </template>
 <script>
 import { useMusicsStore } from "src/stores/musics";
+import { collection, doc, deleteDoc } from "firebase/firestore";
 export default {
   name: "LibraryPage",
   data() {
@@ -55,6 +60,8 @@ export default {
       podcastList: null,
       tab: "musics",
       musicTab: true,
+      openEditPodcast: false,
+      openEditMusica: false,
     };
   },
   beforeMount() {
@@ -95,6 +102,41 @@ export default {
       } else {
         this.musicTab = false;
       }
+    },
+    deleteMusic(item) {
+      this.$axios
+        .post(`${process.env.API}/DeleteMusica`, item)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log("err: ", err);
+        });
+
+      this.$q.notify({
+        color: "green-4",
+        textColor: "white",
+        message: "Deletado com sucesso",
+      });
+    },
+    deletePodcast(item) {
+      this.$axios
+        .post(`${process.env.API}/DeletePodscast`, item)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log("err: ", err);
+        });
+
+      this.$q.notify({
+        color: "green-4",
+        textColor: "white",
+        message: "Deletado com sucesso",
+      });
+
+      const podcast = collection(getFirestore(app), "podcast");
+      deleteDoc(doc(podcast, item));
     },
   },
 };

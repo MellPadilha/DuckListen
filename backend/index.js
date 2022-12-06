@@ -301,6 +301,44 @@ app.post("/CreatePlaylist", (request, response) => {
   request.pipe(bb);
 });
 
+app.post("/DeleteMusica", (request, response) => {
+  response.set("Access-Control-Allow-Origin", "*");
+
+  let uuid = UUID;
+
+  const bb = busboy({ headers: request.headers });
+
+  db.collection("podcast")
+    .doc(fields.name)
+    .set({
+      name: fields.name,
+      musics: fields.musics,
+      image: `https://firebasestorage.googleapis.com/v0/b/${bucket}/o/${uploadedFile.name}?alt=media&token=${uuid}`,
+    })
+    .then(() => {
+      response.send("Upload done");
+    });
+});
+
+app.post("/DeletePodcast", (request, response) => {
+  response.set("Access-Control-Allow-Origin", "*");
+
+  let uuid = UUID;
+
+  const bb = busboy({ headers: request.headers });
+
+  db.collection("musics")
+    .doc(fields.name)
+    .set({
+      name: fields.name,
+      musics: fields.musics,
+      image: `https://firebasestorage.googleapis.com/v0/b/${bucket}/o/${uploadedFile.name}?alt=media&token=${uuid}`,
+    })
+    .then(() => {
+      response.send("Upload done");
+    });
+});
+
 /*
     listen
 */
